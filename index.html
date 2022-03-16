@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet"
+        href="./css/pokedex.css">
+  <title>Pokedex</title>
+</head>
+
+<body>
+  <main class="pokedex"
+        id="pokedex">
+    <section class="pokedex-wrapper">
+      <section class="header">
+        <div class="header-content">
+          <span class="light speaker"></span>
+          <span class="light red"></span>
+          <span class="light yellow"></span>
+          <span class="light green"></span>
+        </div>
+      </section>
+      <section class="screen">
+        <div class="screen-border-shadow">
+          <div class="screen-border">
+            <div class="screen-content"></div>
+          </div>
+        </div>
+      </section>
+      <section class="buttons">
+        <div class="grid grid-rows-2 grid-flow-col gap-4">
+          <div class="search">
+            <div class="search-content">
+              <form id="pokemon-form"
+                    class="pokemon-form">
+                <input type="text"
+                       name="pokemon-id"
+                       class="pokemon-id"
+                       placeholder="¿Quién es ese pokemon?">
+              </form>
+            </div>
+            <div class="status-content">
+              <span class="status-blue"></span>
+              <span class="status-red"></span>
+            </div>
+          </div>
+          <div class="description-content">
+            <div class="description">
+              <p id="description"></p>
+            </div>
+          </div>
+          <div class="row-span-2">
+            <div class="joystick">
+              <button id="next-pokemon"
+                      class="joystick-right"></button>
+              <button id="prev-pokemon"
+                      class="joystick-left"></button>
+              <button id="next-image"
+                      class="joystick-down"></button>
+              <button id="prev-image"
+                      class="joystick-up"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cover"></section>
+      <section class="stats-container">
+        <div class="stats">
+          <canvas id="stats"
+                  width="200"
+                  height="200"></canvas>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>

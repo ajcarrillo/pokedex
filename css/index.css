@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.debug {
+  @apply border border-red-600;
+}
+
+body {
+  font-family: 'Roboto';
+}
+
+main {
+  @apply h-screen flex justify-center items-center bg-sky-900 debug;
+}
+
+.pokedex-wrapper {
+  @apply w-full debug rounded;
+  max-width: 384px;
+}
+
+.header {
+  @apply border-b-2 border-black bg-red-950;
+}
+
+.header-content {
+  @apply p-4 flex items-center gap-2;
+}
+
+.light {
+  @apply w-2 h-2 rounded-full
+}
+
+.light.speaker {
+  @apply w-8 h-8 border-2 border-white bg-blue-400;
+}
+
+.light.red {
+  @apply bg-red-400;
+}
+
+.light.yellow {
+  @apply bg-yellow-400;
+}
+
+.light.green {
+  @apply bg-green-400;
+}
+
+.screen {
+  @apply debug p-8 bg-red-850;
+}
+
+.screen-border-shadow {
+  @apply rounded border-l-8 border-black border-b-8 bg-black;
+}
+
+.screen-border {
+  @apply border-8 border-white rounded bg-white;
+}
+
+.screen-content {
+  @apply bg-yellow-450 border-yellow-450 rounded-lg border-r-2 border-r-yellow-600 border-t-2 border-t-yellow-600;
+  height: 10rem;
+}
+
+.buttons {
+  @apply debug p-8 bg-red-850;
+}
+
+.joystick {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(3, 1.5rem);
+  grid-template-rows: repeat(3, 1.5rem);
+  grid-template-areas: '. up .''left center right''. down .';
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+.joystick>*, .joystick:after {
+  border: none;
+  background-color: #163355;
+  cursor: pointer;
+  position: relative;
+}
+
+.joystick>*:active {
+  transform: scale(.9);
+}
+
+.joystick::after {
+  content: '';
+  grid-area: center;
+}
+
+.joystick-right {
+  grid-area: right;
+}
+
+.joystick-left {
+  grid-area: left;
+}
+
+.joystick-down {
+  grid-area: down;
+}
+
+.joystick-up {
+  grid-area: up;
+}
+
+.joystick>*:after {
+  border: .25rem solid transparent;
+  content: '';
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.joystick-left:after {
+  border-inline-start: none;
+  border-inline-end-color: #fff;
+}
+
+.joystick-right:after {
+  border-inline-end: none;
+  border-inline-start-color: #fff;
+}
+
+.joystick-up:after {
+  border-block-start: none;
+  border-block-end-color: #fff;
+}
+
+.joystick-down:after {
+  border-block-end: none;
+  border-block-start-color: #fff;
+}
+
+.pokemon-id {
+  @apply w-full rounded h-10 px-2 py-1
+}
+
+.description {
+  @apply bg-green-250 p-4 text-sm rounded;
+  font-family: monospace;
+}
+
+.pokemon-id:focus {
+  @apply outline-none;
+}
+
+.status-content {
+  @apply grid grid-cols-2 gap-4 py-4;
+}
+
+.status-blue, .status-red {
+  @apply h-3 rounded;
+}
+
+.status-blue {
+  @apply bg-blue-400;
+}
+
+.status-red {
+  @apply bg-red-400;
+}
+
+.status-blue.is-active {
+  animation: animateBlue 3s linear infinite;
+
+  /* background: #60a5fa;
+  box-shadow: 0 0 10px #60a5fa, 0 0 40px #60a5fa, 0 0 80px #60a5fa; */
+}
+
+.status-red.is-active {
+  /* background: #f87171;
+  box-shadow: 0 0 10px #f87171, 0 0 40px #f87171, 0 0 80px #f87171; */
+  animation: animateRed 3s linear infinite;
+}
+
+@keyframes animateRed {
+  0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+    background: #f87171;
+    box-shadow: none;
+  }
+
+  18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
+    box-shadow: 0 0 10px #f87171, 0 0 40px #f87171, 0 0 80px #f87171;
+  }
+}
+
+@keyframes animateBlue {
+  0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+    background: #60a5fa;
+    box-shadow: none;
+  }
+
+  18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
+    box-shadow: 0 0 10px #60a5fa, 0 0 40px #60a5fa, 0 0 80px #60a5fa;
+  }
+}
