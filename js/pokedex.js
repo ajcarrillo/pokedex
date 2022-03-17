@@ -13,6 +13,7 @@ const $pokemonType = document.querySelector("#pokemon-type");
 
 function loader(isLoading = false) {
   $pokemonImg.src = "";
+  $pokemonName.textContent = "";
   const img = isLoading ? "url(./img/loader.gif)" : "";
   const backgroundColor = isLoading ? "#181817" : "#f1f1d3";
   $screen.style.backgroundImage = img;
@@ -56,7 +57,6 @@ export async function findPokemon(id) {
     type,
   };
 }
-
 export function setImage(image) {
   $pokemonImg.src = image;
 }
@@ -86,18 +86,31 @@ function setType(type) {
 
 let activeChart = null;
 export async function setPokemon(id) {
-  loader(true);
-  const pokemon = await findPokemon(id);
-  loader(false);
+  try {
+    loader(true);
+    const pokemon = await findPokemon(id);
+    loader(false);
 
-  setName(pokemon.name);
-  setImage(pokemon.sprites[0]);
-  setDescription(pokemon.description);
-  setType(pokemon.type);
-  speech(`${pokemon.name}. ${pokemon.description}`);
-  if (activeChart instanceof Chart) {
-    activeChart.destroy();
+    setName(pokemon.name);
+    setImage(pokemon.sprites[0]);
+    setDescription(pokemon.description);
+    setType(pokemon.type);
+    speech(`${pokemon.name}. ${pokemon.description}`);
+    if (activeChart instanceof Chart) {
+      activeChart.destroy();
+    }
+    activeChart = createChart(pokemon.stats);
+    return pokemon;
+  } catch (error) {
+    $pokemonName.textContent = "error";
+    $pokemonImg.src = "./img/pokemon-sad.gif";
+    $screen.style.backgroundImage = "";
+    $screen.style.backgroundColor = "#f1f1d3";
+    $statusBlue.classList.remove("is-active");
+    $statusRed.classList.remove("is-active");
+    if ($statsContainer.classList.contains("slide-down")) {
+      $statsContainer.classList.remove("slide-down");
+    }
+    return;
   }
-  activeChart = createChart(pokemon.stats);
-  return pokemon;
 }
