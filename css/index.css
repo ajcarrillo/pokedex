@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 .debug {
-  @apply border border-red-600;
+  @apply border border-blue-600;
 }
 
 body {
-  @apply h-screen;
+  @apply bg-sky-900 border;
   font-family: 'Roboto';
 }
 
 main {
-  @apply flex justify-center items-center bg-sky-900 debug;
+  @apply h-screen flex items-center justify-center p-4;
 }
 
 .pokedex-wrapper {
-  @apply w-full debug rounded;
+  @apply w-full rounded;
   max-width: 384px;
+  margin: auto
 }
 
 .header {
@@ -53,7 +54,7 @@ main {
 }
 
 .screen {
-  @apply debug p-8 bg-red-850;
+  @apply p-8 bg-red-850;
 }
 
 .screen-border-shadow {
@@ -70,8 +71,34 @@ main {
   background-position: center;
 }
 
+.buttons-content {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 'search joystick''description .'
+}
+
+#search {
+  grid-area: search
+}
+
+#description-content {
+  grid-area: description;
+}
+
+#joystick {
+  grid-area: joystick;
+  grid-row: span 2 / span 2;
+}
+
+.description {
+  height: 7rem;
+  overflow: auto
+}
+
 .buttons {
-  @apply debug p-8 bg-red-850;
+  @apply p-8 bg-red-850;
 }
 
 .joystick {
@@ -184,6 +211,14 @@ main {
   /* background: #f87171;
   box-shadow: 0 0 10px #f87171, 0 0 40px #f87171, 0 0 80px #f87171; */
   animation: animateRed 3s linear infinite;
+}
+
+.stats-container {
+  @apply bg-red-850 p-8;
+}
+
+.stats {
+  @apply p-4 bg-sky-900 rounded-md;
 }
 
 @keyframes animateRed {
