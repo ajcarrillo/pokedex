@@ -8,6 +8,8 @@ const $speaker = document.querySelector("#speaker");
 const $statusBlue = document.querySelector(".status-blue");
 const $statusRed = document.querySelector(".status-red");
 const $statsContainer = document.querySelector(".stats-container");
+const $pokemonName = document.querySelector("#pokemon-name");
+const $pokemonType = document.querySelector("#pokemon-type");
 
 function loader(isLoading = false) {
   $pokemonImg.src = "";
@@ -28,6 +30,7 @@ export async function findPokemon(id) {
   );
   const sprites = [pokemon.sprites.front_default];
   const stats = pokemon.stats.map((item) => item.base_stat);
+  const type = pokemon.types[0].type.name;
 
   for (const item in pokemon.sprites) {
     if (
@@ -50,6 +53,7 @@ export async function findPokemon(id) {
     id: pokemon.id,
     name: pokemon.name,
     stats,
+    type,
   };
 }
 
@@ -72,14 +76,24 @@ function speech(text) {
   });
 }
 
+function setName(name) {
+  $pokemonName.textContent = name;
+}
+
+function setType(type) {
+  $pokemonType.textContent = type;
+}
+
 let activeChart = null;
 export async function setPokemon(id) {
   loader(true);
   const pokemon = await findPokemon(id);
   loader(false);
 
+  setName(pokemon.name);
   setImage(pokemon.sprites[0]);
   setDescription(pokemon.description);
+  setType(pokemon.type);
   speech(`${pokemon.name}. ${pokemon.description}`);
   if (activeChart instanceof Chart) {
     activeChart.destroy();

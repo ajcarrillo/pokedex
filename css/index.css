@@ -66,9 +66,21 @@ main {
 }
 
 .screen-content {
-  @apply bg-yellow-450 border-yellow-450 rounded-lg border-r-2 border-r-yellow-600 border-t-2 border-t-yellow-600 bg-contain bg-no-repeat flex justify-center;
+  @apply bg-yellow-450 border-yellow-450 rounded-lg border-r-2 border-r-yellow-600 border-t-2 border-t-yellow-600 bg-contain bg-no-repeat p-4;
   height: 10rem;
   background-position: center;
+}
+
+#pokemon-img {
+  @apply mx-auto
+}
+
+#pokemon-name {
+  @apply text-center uppercase font-semibold;
+}
+
+#pokemon-type {
+  @apply bg-sky-900 p-4 rounded-md text-center text-white uppercase mb-4;
 }
 
 .buttons-content {
