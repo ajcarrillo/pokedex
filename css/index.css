@@ -7,11 +7,12 @@
 }
 
 body {
+  @apply h-screen;
   font-family: 'Roboto';
 }
 
 main {
-  @apply h-screen flex justify-center items-center bg-sky-900 debug;
+  @apply flex justify-center items-center bg-sky-900 debug;
 }
 
 .pokedex-wrapper {
@@ -47,6 +48,10 @@ main {
   @apply bg-green-400;
 }
 
+.light.is-animated {
+  animation: light .3s linear infinite;
+}
+
 .screen {
   @apply debug p-8 bg-red-850;
 }
@@ -60,8 +65,9 @@ main {
 }
 
 .screen-content {
-  @apply bg-yellow-450 border-yellow-450 rounded-lg border-r-2 border-r-yellow-600 border-t-2 border-t-yellow-600;
+  @apply bg-yellow-450 border-yellow-450 rounded-lg border-r-2 border-r-yellow-600 border-t-2 border-t-yellow-600 bg-contain bg-no-repeat flex justify-center;
   height: 10rem;
+  background-position: center;
 }
 
 .buttons {
@@ -199,5 +205,19 @@ main {
 
   18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
     box-shadow: 0 0 10px #60a5fa, 0 0 40px #60a5fa, 0 0 80px #60a5fa;
+  }
+}
+
+@keyframes light {
+  0% {
+    background-color: #fff;
+  }
+
+  50% {
+    background-color: #60a5fa;
+  }
+
+  100% {
+    background-color: #fff;
   }
 }

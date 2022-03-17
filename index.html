@@ -25,7 +25,8 @@
     <section class="pokedex-wrapper">
       <section class="header">
         <div class="header-content">
-          <span class="light speaker"></span>
+          <span class="light speaker"
+                id="speaker"></span>
           <span class="light red"></span>
           <span class="light yellow"></span>
           <span class="light green"></span>
@@ -33,8 +34,14 @@
       </section>
       <section class="screen">
         <div class="screen-border-shadow">
-          <div class="screen-border">
-            <div class="screen-content"></div>
+          <div class="screen-border"
+               id="screen-border">
+            <div class="screen-content"
+                 id="screen-content">
+              <img src=""
+                   alt=""
+                   id="pokemon-img">
+            </div>
           </div>
         </div>
       </section>
@@ -47,6 +54,7 @@
                 <input type="text"
                        name="pokemon-id"
                        class="pokemon-id"
+                       autocomplete="off"
                        placeholder="¿Quién es ese pokemon?">
               </form>
             </div>
@@ -84,6 +92,9 @@
       </section>
     </section>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+  <script src="./js/index.js"
+          type="module"></script>
 </body>
 
 </html>
