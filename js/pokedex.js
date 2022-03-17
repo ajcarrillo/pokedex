@@ -103,6 +103,7 @@ export async function setPokemon(id) {
     return pokemon;
   } catch (error) {
     $pokemonName.textContent = "error";
+    $description.textContent = "";
     $pokemonImg.src = "./img/pokemon-sad.gif";
     $screen.style.backgroundImage = "";
     $screen.style.backgroundColor = "#f1f1d3";
