@@ -1,42 +1,44 @@
-const ctx = document.getElementById('stats').getContext('2d');
+const ctx = document.getElementById("stats").getContext("2d");
 
 export function createChart(stats) {
   return new Chart(ctx, {
-    type: 'radar',
+    type: "radar",
     data: {
       labels: [
-        'HP',
-        'Attack',
-        'Defense',
-        ['Special', 'Attack'],
-        ['Special', 'Defense'],
-        'Speed',
+        "HP",
+        "Ataque",
+        "Defensa",
+        ["Ataque", "Especial"],
+        ["Defensa", "Especial"],
+        "Velocidad",
       ],
-      datasets: [{
-        data: stats,
-        backgroundColor: 'white'
-      }]
+      datasets: [
+        {
+          data: stats,
+          backgroundColor: "white",
+        },
+      ],
     },
     options: {
       maintainAspectRatio: false,
       plugins: {
         legend: {
           display: false,
-        }
+        },
       },
       scales: {
         r: {
-          grid :{
-            color: 'white'
+          grid: {
+            color: "white",
           },
           pointLabels: {
-            color: 'white'
+            color: "white",
           },
           angleLines: {
-            color: 'white'
-          }
-        }
-      }
-    }
+            color: "white",
+          },
+        },
+      },
+    },
   });
 }

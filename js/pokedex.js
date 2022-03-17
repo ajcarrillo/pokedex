@@ -5,6 +5,9 @@ const $pokemonImg = document.querySelector("#pokemon-img");
 const $description = document.querySelector("#description");
 const $screen = document.querySelector("#screen-content");
 const $speaker = document.querySelector("#speaker");
+const $statusBlue = document.querySelector(".status-blue");
+const $statusRed = document.querySelector(".status-red");
+const $statsContainer = document.querySelector(".stats-container");
 
 function loader(isLoading = false) {
   $pokemonImg.src = "";
@@ -15,6 +18,9 @@ function loader(isLoading = false) {
 }
 
 export async function findPokemon(id) {
+  $statusBlue.classList.add("is-active");
+  $statusRed.classList.add("is-active");
+
   const pokemon = await getPokemon(id);
   const species = await getSpecies(id);
   const description = species.flavor_text_entries.find(
@@ -22,6 +28,7 @@ export async function findPokemon(id) {
   );
   const sprites = [pokemon.sprites.front_default];
   const stats = pokemon.stats.map((item) => item.base_stat);
+
   for (const item in pokemon.sprites) {
     if (
       item !== "front_default" &&
@@ -32,6 +39,11 @@ export async function findPokemon(id) {
       sprites.push(pokemon.sprites[item]);
     }
   }
+
+  $statusBlue.classList.remove("is-active");
+  $statusRed.classList.remove("is-active");
+  $statsContainer.classList.add("slide-down");
+
   return {
     sprites,
     description: description.flavor_text,

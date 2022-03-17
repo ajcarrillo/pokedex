@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-sky-900 border;
+  @apply bg-sky-900;
   font-family: 'Roboto';
 }
 
@@ -214,8 +214,52 @@ main {
 }
 
 .stats-container {
-  @apply bg-red-850 p-8;
+  @apply bg-red-850 p-8 invisible;
+  z-index: -1;
 }
+
+.slide-down {
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
+
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+
+  visibility: visible !important;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  /* 50% {
+    transform: translateY(8%);
+  } */
+
+  65% {
+    transform: translateY(-4%);
+  }
+
+  /* 80% {
+    transform: translateY(4%);
+  } */
+
+  95% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* .stats-container.in {
+  @apply absolute top-0;
+} */
 
 .stats {
   @apply p-4 bg-sky-900 rounded-md;
